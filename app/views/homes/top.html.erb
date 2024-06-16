@@ -1,0 +1,18 @@
+<h1>投稿一覧</h1>
+
+<% @posts.each do |post| %>
+　<p><%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+
+  <h4>好きなカラオケのジャンル（またはよく歌うカラオケのジャンル）</h4>
+  <p><%= post.genre %></p>
+
+  <h4>記入欄</h4>
+  <p><%= post.message %></p>
+
+  <h4>写真</h4>
+  <% if post.photo.present? %>
+     <%= image_tag post.photo.url %>
+  <% end %>
+
+  <hr>
+<% end %>
