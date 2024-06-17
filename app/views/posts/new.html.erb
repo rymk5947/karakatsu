@@ -1,0 +1,29 @@
+<h1>投稿フォーム</h1>
+
+<%= form_with(model: Post.new, url: root_path, method: 'post') do |f| %>
+  <h4>好きなカラオケのジャンル（またはよく歌うカラオケのジャンル）</h4>
+  <%= f.select :genre, [["J-POP"], ["アニソン"], ["K-POP"], ["ボーカロイド"], ["演歌"], ["洋楽"], ["その他"]] %>
+
+  <h4>記入欄</h4>
+  <%= f.text_area :message %>
+
+  <h4>写真のアップロード</h4>
+  <%= f.file_field :photo, accept: "photo/*" %>
+
+  <%= f.submit 'ポストする' %>
+<% end %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const submitButton = document.querySelector('input[type="submit"]');
+    const textArea = document.querySelector('textarea[name="post[message]"]');
+
+    textArea.addEventListener('input', function() {
+      if (textArea.value.trim() === '') {
+        submitButton.disabled = true;
+      } else {
+        submitButton.disabled = false;
+      }
+    });
+  });
+</script>

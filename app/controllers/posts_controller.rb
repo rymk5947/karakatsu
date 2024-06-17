@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to root_path, notice: '投稿が成功しました。'
     else
-      render file: 'app/views/posts/show.html.erb', layout: true
+      render :new
     end
   end
 
@@ -17,7 +17,13 @@ class PostsController < ApplicationController
   def update
     post = Post.find(params[:id])
     post.update(post_params)
-    redirect_to post_path(post.id)
+    redirect_to root_path
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to root_path
   end
 
   private

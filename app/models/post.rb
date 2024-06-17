@@ -3,4 +3,6 @@
 class Post < ApplicationRecord
   # Postクラスの定義
    has_one_attached :photo
+   
+   validates :message, presence: true
 end
