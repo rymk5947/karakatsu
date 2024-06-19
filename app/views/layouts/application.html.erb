@@ -8,9 +8,34 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    
+  <div class="navbar">
+  <%= link_to "カラ活", root_path %>
+  <input type="checkbox" class="hamburger-checkbox" id="hamburger-checkbox">
+  <label class="hamburger-label" for="hamburger-checkbox">
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
+  </label>
+  <ul class="menu">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">SIGH UP</a></li>
+    <li><a href="#">LOG IN</a></li>
+    <li><a href="#">LOG OUT</a></li>
+    <li><a href="#">MY PAGE</a></li>
+    <li><a href="#">NEW POST</a></li>
+    <li><a href="#">LIKE</a></li>
+    <li><a href="#">FOLLOW</a></li>
+  </ul>
+</div>
   </head>
 
-  <body>
+ <main>
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
     <%= yield %>
-  </body>
+  </main>
+
 </html>

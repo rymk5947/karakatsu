@@ -1,7 +1,7 @@
 class CreatePosts < ActiveRecord::Migration[6.1]
   def change
       create_table :posts do |t|
-        t.string :genre
+        t.integer :genre, default: 0
         t.text :message
         t.binary :photo
       end

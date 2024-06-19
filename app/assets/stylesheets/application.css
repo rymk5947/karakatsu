@@ -13,3 +13,76 @@
  *= require_tree .
  *= require_self
  */
+.hamburger-checkbox {
+  display: none;
+}
+
+.hamburger-label {
+  display: block;
+  width: 30px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  position: absolute;
+  left: 0;
+  transition: transform 0.3s ease;
+}
+
+.line:nth-child(1) {
+  top: 0;
+}
+
+.line:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.line:nth-child(3) {
+  bottom: 0;
+}
+
+.hamburger-checkbox:checked ~ .menu {
+  display: block;
+}
+
+.hamburger-checkbox:checked ~ .hamburger-label .line:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger-checkbox:checked ~ .hamburger-label .line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-checkbox:checked ~ .hamburger-label .line:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+.menu {
+  display: none;
+  list-style-type: none;
+}
+
+ .flash-message {
+  border-radius: 5px;
+  padding: 16px 24px;
+  margin: 16px 0px;
+}
+
+.flash-message.notice {
+  background-color: #bcdfff;
+  color: #0067C0;
+  border: solid 1px #0067C0;
+}
+
+.flash-message.alert {
+  background-color: #ffd4d1;
+  color: #930403;
+  border: solid 1px #930403;
+}

@@ -1,16 +1,20 @@
-<h1>投稿一覧</h1>
-<% @posts.each do |post| %>
-  <p><%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
 
-  <h4>好きなカラオケのジャンル（またはよく歌うカラオケのジャンル）</h4>
-  <p><%= post.genre %></p>
+<div class="post-wrap">
+  <% @posts.each do |post| %>
+    <div class="post-box">
+      <p class="post-date"><%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
 
-  <h4>記入欄</h4>
-  <p><%= post.message %></p>
+      <h4 class="post-heading">好きなカラオケのジャンル（またはよく歌うカラオケのジャンル）</h4>
+      <p class="post-content"><%= post.genre %></p>
 
-  <h4>写真</h4>
-  <% if post.photo.attached? %>
-    <%= image_tag(post.photo) %>
+      <h4 class="post-heading">記入欄</h4>
+      <p class="post-content"><%= post.message %></p>
+
+      <h4 class="post-heading">写真</h4>
+      <% if post.photo.attached? %>
+        <%= image_tag(post.photo) %>
+      <% end %>
+    </div>
+    <hr class="post-hr">
   <% end %>
-  <hr>
-<% end %>
+</div>

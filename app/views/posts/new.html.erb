@@ -12,18 +12,3 @@
 
   <%= f.submit 'ポストする' %>
 <% end %>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const submitButton = document.querySelector('input[type="submit"]');
-    const textArea = document.querySelector('textarea[name="post[message]"]');
-
-    textArea.addEventListener('input', function() {
-      if (textArea.value.trim() === '') {
-        submitButton.disabled = true;
-      } else {
-        submitButton.disabled = false;
-      }
-    });
-  });
-</script>

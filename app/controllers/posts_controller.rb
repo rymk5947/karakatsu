@@ -4,8 +4,10 @@ class PostsController < ApplicationController
     @post.created_at = Time.now # 現在の日時を設定する
     @post.photo.attach(params[:post][:photo]) if params[:post][:photo]
     if @post.save
-      redirect_to root_path, notice: '投稿が成功しました。'
+      flash[:notice] = "投稿に成功しました。"
+      redirect_to root_path
     else
+       flash.now[:alert] = "投稿に失敗しました。"
       render :new
     end
   end
