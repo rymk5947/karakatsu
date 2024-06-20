@@ -13,6 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+.left-navbar {
+  float: left;
+}
+
+.right-navbar {
+  float: right;
+}
+
 .hamburger-checkbox {
   display: none;
 }
@@ -67,6 +76,19 @@
 .menu {
   display: none;
   list-style-type: none;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #fd7e00; /* ヘッダーの背景色 */
+  /* その他のスタイル */
+}
+
+.post-wrap {
+  margin-top: 60px;
 }
 
  .flash-message {

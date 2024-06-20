@@ -1,9 +1,7 @@
-
 <div class="post-wrap">
-  <% @posts.each do |post| %>
-    <div class="post-box">
-      <p class="post-date"><%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+  <div class="post-box">
 
+    <% @posts.each do |post| %>
       <h4 class="post-heading">好きなカラオケのジャンル（またはよく歌うカラオケのジャンル）</h4>
       <p class="post-content"><%= post.genre %></p>
 
@@ -14,6 +12,8 @@
       <% if post.photo.attached? %>
         <%= image_tag(post.photo) %>
       <% end %>
+
+      <p class="post-date"><%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
     </div>
     <hr class="post-hr">
   <% end %>
