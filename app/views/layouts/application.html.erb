@@ -8,6 +8,9 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
+  <script src="https://kit.fontawesome.com/0fed6ac93a.js" crossorigin="anonymous"></script>
+
   <body>
     <div class="header">
       <div class="navbar left-navbar">
@@ -26,18 +29,63 @@
           <span class="line"></span>
           <span class="line"></span>
         </label>
-        <ul class="menu">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">SIGH UP</a></li>
-          <li><a href="#">LOG IN</a></li>
-          <li><a href="#">LOG OUT</a></li>
-          <li><a href="#">MY PAGE</a></li>
-          <li><a href="#">NEW POST</a></li>
-          <li><a href="#">LIKE</a></li>
-          <li><a href="#">FOLLOW</a></li>
-        </ul>
+        
+          <ul class="menu">
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to user_path(current_user) do %>
+                  <i class="fa-duotone fa-house"></i> ホーム
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to root_path do %>
+                  <i class="fa-duotone fa-circle-user"></i> マイページ
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_post_path do %>
+                  <i class="fa-duotone fa-message-pen"></i> 投稿フォーム
+                <% end %>
+              </li>
+              <li>
+                <%= link_to root_path do %>
+                  <i class="fa-duotone fa-heart"></i> いいね
+                <% end %>
+              </li>
+              <li>
+                <%= link_to root_path do %>
+                  <i class="fa-duotone fa-user-plus"></i> フォロー
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fa-duotone fa-right-from-bracket"></i> ログアウト
+                <% end %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to root_path do %>
+                  <i class="fa-duotone fa-house"></i> ホーム
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_user_registration_path do %>
+                  <i class="fa-duotone fa-pen-to-square"></i> サインアップ
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_user_registration_path do %>
+                  <i class="fa-duotone fa-right-to-bracket"></i> ログイン
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </label>
       </div>
     </div>
+
+  <%= yield %>
 
     <main>
     <% flash.each do |message_type, message| %>

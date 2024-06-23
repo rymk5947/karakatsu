@@ -1,7 +1,24 @@
 <div class="post-wrap">
-  <div class="post-box">
+  <% @posts.each do |post| %>
+    <div class="post-box">
+      <% if post.user.present? %>
+        <% if post.user.profile_photo.attached? %>
+          <%= image_tag(post.user.profile_photo, size: "200x200") %>
+        <% else %>
+          <%= image_tag('/assets/no_image.png', size: "200x200") %>
+        <% end %>
+        <%= post.user.name %>
+        <% if post.user.age.present? %>
+          <%= post.user.age %>
+        <% end %>
+        <% if post.user.sex.present? %>
+          <%= post.user.sex %>
+        <% end %>
+      <% else %>
+        <%= image_tag('/assets/no_image.png', size: "200x200") %>
+        <p>ユーザー情報がありません</p>
+      <% end %>
 
-    <% @posts.each do |post| %>
       <h4 class="post-heading">好きなカラオケのジャンル（またはよく歌うカラオケのジャンル）</h4>
       <p class="post-content"><%= post.genre %></p>
 

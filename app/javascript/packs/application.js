@@ -11,3 +11,12 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+// ハンバーガーメニューのチェックボックス要素を取得します
+const hamburgerCheckbox = document.querySelector('.hamburger-checkbox');
+
+// ハンバーガーメニューがクリックされたら、メニューの表示/非表示を切り替えます
+hamburgerCheckbox.addEventListener('click', function() {
+  const ul = document.querySelector('ul');
+  ul.style.display = (ul.style.display === 'block') ? 'none' : 'block';
+});

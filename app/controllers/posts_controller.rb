@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
     @post.created_at = Time.now # 現在の日時を設定する
     @post.photo.attach(params[:post][:photo]) if params[:post][:photo]
     if @post.save
@@ -10,6 +11,10 @@ class PostsController < ApplicationController
        flash.now[:alert] = "投稿に失敗しました。"
       render :new
     end
+  end
+
+  def new
+    @post = Post.new
   end
 
   def edit
